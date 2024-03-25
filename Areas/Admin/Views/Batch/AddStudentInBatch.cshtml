@@ -1,0 +1,79 @@
+﻿@model DatabaseOperation.tblbatch_students
+@{
+    ViewBag.Title = "AddBatch";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>AddBatch</h2>
+<script>
+    $(document).ready(function () {
+        GetTopics();
+        //getTopicWiseStudent();
+    })
+    function GetTopics() {
+        $.ajax({
+            url: "/Admin/Batch/GetAllTopic",
+            method: 'get',
+            contentType: 'application/json',
+            success: function (resp) {
+                console.log(resp);
+                $.each(resp, function (i,d) {
+                    $("#txttopic").append("<option value= "+ d.Value +" >" + d.Text + "</option>")
+                })
+            }
+        })   
+    }
+
+    function GetTrainer() {
+        $.ajax({
+            url:"/Admin/Batch/GetAllTopic"
+        })
+    }
+</script>
+
+<div>
+    <div class="card">
+        <div class="card-header">
+            <h3 style="font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif">
+                Create Batch
+            </h3>
+        </div>
+        <div class="card-body">
+            <div class="mb-3">
+                <label>Batch Name</label>
+                <input type="text" id="txtbatch" class="form-control"/>
+            </div>
+            <div class="md-3">
+                <label>Topic Name</label>
+               <select id="txttopic" class="form-control" >
+                   <option >Select Topic</option>
+               </select>
+            </div>
+            <div class="md-3">
+                <label>Trainer Name</label>
+                <input type="text" id="txttrainer" class="form-control" />
+            </div>
+            <div class="md-3">
+                <label>Start Date</label>
+               <input type="date" id="txtstartdate"  class="form-control" />
+            </div>
+            <div class="md-3">
+                <label>Start Date</label>
+                <input type="date" id="txtenddate" class="form-control" />
+            </div>
+            <div class="md-3">
+                <label>Batch Time</label>
+                <input type="time" id="txttime" class="form-control"/>
+            </div>
+            <div class="md-3">
+                <label>Status</label>
+               <input type="text" id="txtstatus" class="form-control"/>
+            </div>
+        </div>
+        <div class="card-footer">
+            <input type="submit" value="Submit" class="btn btn-primary" />
+            @ViewBag.msg
+        </div>
+    </div>
+</div>
+

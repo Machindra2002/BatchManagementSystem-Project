@@ -1,0 +1,84 @@
+﻿@model DatabaseOperation.tbltraining_course_fees
+@{
+    ViewBag.Title = "AddCourseFees";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>AddCourseFees</h2>
+
+<div class="row">
+    <div class="col-md-4">
+        @using (Html.BeginForm())
+        {
+            <div class="card">
+                <div class="card-body">
+                    <div class="md-4">
+                        @Html.DropDownListFor(e => e.course_id, ViewBag.courses as List<SelectListItem>, "select course", new { @class = "form-control" })
+                    </div>
+                  @*  <div class="md-3">
+                        <label>Course</label>
+                        @Html.TextBoxFor(e => e.tbltraining_courses.course_name, new { @class = "form-control" })
+                    </div>*@
+                    <div class="md-3">
+                        <label>Fees Amount</label>
+                        @Html.TextBoxFor(e => e.fees_amount, new { @class = "form-control" })
+                    </div>
+                    <div class="md-4">
+                        <label>GST</label>
+                        @Html.TextBoxFor(e => e.gst, new { @class = "form-control" })
+                    </div>
+                    <div class="md-4">
+                        <label>Fees Mode</label>&nbsp;
+                        @Html.RadioButtonFor(e => e.fee_mode, "Lumsum")&nbsp;<span>Lumsum</span>
+                        &nbsp;
+                        @Html.RadioButtonFor(e => e.fee_mode, "Installment")&nbsp;<span>Installment</span>
+                        
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <input type="submit" value="Submit" class="btn btn-primary" />
+                </div>
+            </div>
+        }
+    </div>
+    <div class="col-md-8">
+        @{
+            int i = 1;
+        }
+        @if (ViewBag.coursefeess != null)
+        {
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Sr.No</th>
+                        <th>Course Name</th>
+                        <th>Fees Amount</th>
+                        <th>GST</th>
+                        <th>Fees Mode</th>
+                        <th>Total Fees</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in ViewBag.coursefeess)
+                    {
+                        <tr>
+                            <td>@i</td>
+                            <td>@item.tbltraining_courses.course_name</td>
+                            <td>@item.fees_amount</td>
+                            <td>@item.gst</td>
+                            <td>@item.fee_mode</td>
+                            <td>
+                                @{
+                                    double totalFees = (item.fees_amount * (item.gst/100)) + item.fees_amount;
+                                    @totalFees
+                                }
+                            </td>
+                        </tr>
+                        i++;
+                    }
+                </tbody>
+            </table>
+        }
+
+    </div>
+</div>

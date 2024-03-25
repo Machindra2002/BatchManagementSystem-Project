@@ -1,0 +1,261 @@
+﻿@model IEnumerable<DatabaseOperation.tbltraining_courses>
+@{
+    ViewBag.Title = "AddCourse_CourseFees";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>AddCourse_CourseFees</h2>
+
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+
+<script>
+    var coursefees = [];
+    var fm;
+    var topicsarr = [];
+
+    $(document).ready(function () {
+        FetchCourseTopics();
+
+        $("#btncoursefee").click(function () {
+            AddCourseFees();
+        });
+        $("#txtsubmit").click(function () {
+            AddCourse();
+        })
+
+        $("#btncoursetopics").click(function () {
+            AddCourseTopics();
+        })
+    });
+
+
+    function FetchCourse(id) {
+        // alert(id);
+        $("#coursemodal").modal("show");
+        $("#courseId").val(id);
+
+    }
+
+    function FetchCourseTopics() {
+        $.ajax({
+            url: '/Course/FetchTopics',
+            method: 'get',
+            contentType: 'application/json',
+            data: JSON,
+            success: function (resp) {
+                console.log(resp);
+                $("#topics").empty();
+                $.each(resp, function (i, d) {
+                    $("#topics").append("<div class='col-md-3'><input type='checkbox' name='topics' value='" + d.topic_id + "'/>" + d.topic_name + "</div>")
+                })
+            }
+        })
+    }
+
+
+    function AddCourseTopics() {
+        var cid = $("#courseId").val();
+        $("input:checkbox[name=topics]:checked").each(function () {
+            topicsarr.push($(this).val())
+        })
+        var topic = [];
+        for (var i = 0; i < topicsarr.length; i++) {
+            topic.push({ "course_id": cid, "topic_id": topicsarr[i] });
+        }
+        console.log(topic);
+        $.ajax({
+            url: '/Course/AddCourseTopic',
+            method: 'post',
+            contentType: 'application/json',
+            data: JSON.stringify(topic),
+            success: function (resp) {
+                alert("Data added successfully");
+                $("#coursemodal").modal("hide");
+            }
+        })
+
+    }
+
+    function AddCourseFees() {
+        var cf = $("#txtcoursefees").val();
+        var gst = $("#txtgst").val();
+        var fm = $('input[name="txtfeem"]:checked').val();
+        var st = { "fees_amount": cf, "gst": gst, "fee_mode": fm };
+        coursefees.push(st);
+        FillData();
+        clear();
+    }
+
+    function FillData() {
+        $("#tblcoursefe edata").empty();
+        $.each(coursefees, function (i, d) {
+            $("#tblcoursefeedata").append("<tr><td>" + (i + 1) + "</td><td>" + d.fees_amount + "</td><td>" + d.gst + "</td><td>" + d.fee_mode + "</td></tr>")
+        })
+    }
+
+    function AddCourse() {
+        var c = $("#txtcourse").val();
+        var st = { "course_name": c, "tbltraining_course_fees": coursefees };
+        console.log(st);
+        $.ajax({
+            url: '/Course/AddCourse_CourseFees',
+            method: 'post',
+            data: JSON.stringify(st),
+            contentType: 'application/json',
+            success: function (resp) {
+                alert("Course Added Successfully");
+            }
+        })
+    }
+
+    function clear() {
+        $("#txtcoursefees").val("");
+        $("#txtgst").val("");
+        //$("#txtfeemode").val("");
+    }
+
+</script>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-4">
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-title">Course</div>
+                </div>
+                <div class="card-body">
+                    <div class="col-md-12">
+                        <label><b>Course Id</b></label>
+                        <input type="text" id="txtcourseId" disabled class="form-control" />
+                    </div>
+                    <div class="col-md-12">
+                        <label><b>Course</b></label>
+                        <input type="text" id="txtcourse" class="form-control" />
+                    </div>
+                    <div class="md-3">
+                        <label><b>Course Fees</b></label>
+                        <input type="text" id="txtcoursefees" class="form-control" />
+                        <label><b>GST</b></label>
+                        <input type="text" id="txtgst" class="form-control" />
+                    </div>
+                    <br />
+                    <div class="col-md-12, form-control">
+                        <label><b>Fees Mode :</b></label>
+                        <input type="radio" name="txtfeem" id="txtfeemode" value="Lumsum" />&nbsp; Lumsum &nbsp;
+                        <input type="radio" name="txtfeem" id="txtfeemode" value="Installment" />&nbsp;Installment&nbsp;
+                    </div>
+                    <br />
+                    <input type="button" value="+" id="btncoursefee" class="btn btn-outline-info" />
+                </div>
+                <div class="card-footer">
+                    <input type="button" value="Submit" id="txtsubmit" class="btn btn-primary" />
+                </div>
+                <br />
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Sr No</th>
+                            <th>Course Fees</th>
+                            <th>Gst</th>
+                            <th>Fee Mode</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tblcoursefeedata"></tbody>
+                </table>
+            </div>
+
+
+        </div>
+
+        <!-- Modal -->
+        <div class="modal fade" id="coursemodal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content" style="width:150%">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <input type="text" id="courseId" class="form-control" />
+                        <div id="topics" class="row"></div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="button" id="btncoursetopics" class="btn btn-primary">ADD</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-7">
+            @if (Model != null)
+            {
+                foreach (var item in Model)
+                {
+
+                    <div class="accordion accordion-flush" id="accordion-@item.course_id">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="heading-@item.course_id">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#collapse-@item.course_id" aria-expanded="false" aria-controls="collapse-@item.course_id">
+                                    @item.course_name
+                                </button>
+                            </h2>
+                            <div id="collapse-@item.course_id" class="accordion-collapse collapse" aria-labelledby="heading-@item.course_id" 
+                                 data-bs-parent="#accordion-@item.course_id">
+                                <div class="accordion-body">
+                                    <strong>This is the first item's accordion body.</strong>
+                                    <input type="button" value="CourseModel" onclick="AddCourseTopic(@item.course_id)" class="btn btn-outline-info" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                }
+            }
+
+
+            <!--<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Course Name </th>
+            <th>Course Fees </th>
+            <th>Gst </th>
+            <th>Fee Mode </th>
+        </tr>
+    </thead>
+    <tbody>
+
+                    <td>-->
+            @*<input type="button" value="CourseModel" onclick="AddCourseTopic(@item.course_id)" class="btn btn-outline-info" />*@
+            <!--<input type="button" value="CourseModel" onclick="FetchCourse()" class="btn btn-outline-info" />
+                        </td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>-->
+        </div>
+    </div>
+</div>
+
+@*
+@if (Model != null)
+{
+    foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.course_name</td>
+            @if (item.tbltraining_course_fees != null)
+            {
+                foreach (var cf in item.tbltraining_course_fees)
+                {
+                    <td>@cf.fees_amount</td>
+                    <td>@cf.gst</td>
+                    <td>@cf.fee_mode</td>
+                }
+            }
+
+
+
+*@

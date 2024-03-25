@@ -1,0 +1,73 @@
+﻿@model DatabaseOperation.tblstudent_registrations
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<br/>
+<div class="col-md-8">
+    <div class="container-sm">
+        @using (Html.BeginForm())
+        {
+            <div class="card">
+                <div class="card-header">
+                    <h3>Student Registration</h3>
+                </div>
+                <div class="card-body" style="display:block; ";>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <label>Student</label>
+                            @Html.DropDownListFor(e => e.student_id, ViewBag.student as List<SelectListItem>, "select Student", new { @class = "form-control" })
+                        </div>
+                        <div class="col-md-4">
+                            <label>Course</label>
+                            @Html.DropDownListFor(e => e.course_id, ViewBag.courses as List<SelectListItem>, "select Course", new { @class = "form-control" })
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <label>Registration Date</label>
+                            @Html.TextBoxFor(e => e.registration_date, new { @class = "form-control", type = "date" })
+                        </div>
+                        <div class="col-md-4">
+                            <label>Discount</label>
+                            @Html.TextBoxFor(e => e.discount, new { @class = "form-control" })
+                        </div>
+                    </div>
+                </div>
+                <br/>
+                <div class="card-footer">
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+<br/>
+<div>
+   <table class="table table-bordered">
+       @{ 
+           int i = 1;
+       }
+       <thead>
+           <tr>
+               <th>Sr No</th>
+               <th>Student Name</th>
+               <th>Course Name</th>
+               <th>Discount</th>
+           </tr>
+       </thead>
+       <tbody>
+           @foreach(var item in ViewBag.studregistration)
+            {
+                <tr>
+                    <td>@i</td>
+                    <td>@item.tblstudent_details.student_name</td>
+                    <td>@item.tbltraining_courses.course_name</td>
+                    <td>@item.discount</td>
+                </tr>
+               i++;
+           }
+       </tbody>
+   </table>
+</div>

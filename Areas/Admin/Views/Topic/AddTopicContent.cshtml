@@ -1,0 +1,210 @@
+﻿@model IEnumerable<DatabaseOperation.tbltraining_topics>
+@{
+    ViewBag.Title = "AddTopicContent";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>AddTopicContent</h2>
+<script>
+    var contentdata = [];
+
+    $(document).ready(function () {
+        $("#btncontent").click(function () {
+            AddContent();
+        })
+
+        $("#txttopic").click(function () {
+            AddTopic();
+            AddTopicUsingDropDown();
+        })
+
+        $("#tbltopicdata").click(function () {
+            GetTopicData();
+        })
+    })
+
+    function AddContent() {
+        var cname = $("#txtcname").val();
+        var st = { "content_name": cname };
+        contentdata.push(st);
+        clear();
+        FillData();
+    }
+
+    function FillData() {
+        $("#tblcontentdata").empty();
+        $.each(contentdata, function (i, d) {
+            $("#tblcontentdata").append("<tr><td>" + (i + 1) + "</td><td>" + d.content_name + "</td></tr>")
+        })
+    }
+
+    function AddTopic() {
+        var tname = $("#txtname").val();
+        var existingTopic = $("#dropdown").val();
+        var st = { "topic_name": tname, "tbltopic_contents": contentdata };
+        console.log(st);
+        if (existingTopic) {
+            AddContentToExistngTopic(existingTopic);
+        }
+        else {
+            $.ajax({
+                url: '/Topic/AddTopicContent',
+                method: 'post',
+                data: JSON.stringify(st),
+                contentType: 'application/json',
+                success: function (resp) {
+                    alert(resp);
+                    GetTopicData();
+                }
+            });
+        }
+    }
+
+    function AddContentToExistngTopic(existingTopic) {
+        var st = { "topic_id": existingTopic, "tbltopic_contents": contentdata };
+        $.ajax({
+            url: '/Topic/AddContentToExistingTopic',
+            method: 'post',
+            data: JSON.stringify(st),
+            contentType: 'application/json',
+            success: function (resp) {
+                alert(resp);
+                GetTopicData();
+            }
+        });
+    }
+
+    function GetTopicData() {
+        $.ajax({
+            url: '/Topic/AddTopicContent',
+            method: 'get',
+            contentType: 'application/json',
+            success: function (resp) {
+                $("#tbltopicdata").empty();
+                $.each(resp, function (i, d) {
+                    $("#tbltopicdata").append("<tr><td>" + (i + 1) + "</td><td>" + d.topic_name + "</td></tr>")
+                })
+            }
+        })
+    }
+
+    function View(tid) {
+        alert(tid);
+        debugger;
+        $.ajax({
+            url: '/Topic/EditTopicData/' + tid,
+            method: 'get',
+            contentType: 'application/json',
+            success: function (resp) {
+                console.log(resp);
+                $("#txttid").val(resp.topic_id);
+                $("#txtname").val(resp.topic_name);
+
+            }
+        })
+    }
+
+
+    function clear() {
+        $("#txtcname").val("");
+    }
+
+    
+
+</script>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-5">
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-title">Topic Content Model</div>
+                </div>
+                <div class="card-body">
+                    <div class="md-4">
+                        <label>Topic Id</label>
+                        <input type="text" id="txttid" disabled class="form-control" />
+                    </div>
+                    <div class="md-3">
+                        <label>Topic Name</label>
+                        <input type="text" id="txtname" class="form-control" />
+                        <label for="dropdown">Choose Existing Topic</label>
+                        <select id="dropdown" class="form-control">
+                             <option>select topic</option>
+                            @if (ViewBag.topics != null)
+                            {
+                                foreach (var topics in ViewBag.topics)
+                                {
+                                    <option value="@topics.topic_id">@topics.topic_name</option>
+                                }
+                            }
+                        </select>
+
+                    </div>
+                    <div class="md-3">
+                        <label>Content Name</label>
+                        <input type="text" id="txtcname" class="form-control"/>
+                        <input type="button" value="+" id="btncontent" class="btn btn-outline-info"/>
+                    </div>
+                    &nbsp;
+                    <div class="md-3">
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>Sr No</th>
+                                    <th>Content Name</th>
+                                </tr>
+                            </thead>
+                            <tbody id="tblcontentdata"></tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <input type="button" value="Submit" id="txttopic" class="btn btn-primary" />
+                </div>
+            </div>
+        </div>
+
+        <div class="col-7">
+            @{ 
+                int i = 1;
+            }
+            <table class="table d-xxl-table-cell">
+                <thead style="color:orangered; font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif">
+                    <tr>
+                        <th>SR No</th>
+                        <th>Topic Name</th>
+                        <th>Content</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody id="tbltopicdata">
+                    @if (ViewBag.topics != null)
+                    {
+                        foreach (var item in ViewBag.topics)
+                        {
+                            <tr>
+                                <td>@i</td>
+                                <td><b style="color:ActiveCaption">@item.topic_name</b></td>
+                                <td>
+                                    @if (item.tbltopic_contents != null)
+                                    {
+                                        foreach (var c in item.tbltopic_contents)
+                                        {
+                                            @c.content_name<span><b> ,</b>&nbsp;</span>
+                                        }
+                                    }
+                                </td>
+                                <td>
+                                    <input type="button" value="view"  onclick="View(@item.topic_id)" />
+                                </td>
+                            </tr>
+                            i++;
+                        }
+                    }
+                </tbody>
+
+            </table>
+        </div>
+    </div>
+</div>

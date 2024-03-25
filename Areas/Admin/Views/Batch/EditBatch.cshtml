@@ -1,0 +1,58 @@
+﻿@model DatabaseOperation.tblbatch
+@{
+    ViewBag.Title = "EditBatch";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>EditBatch</h2>
+
+
+<div class="row">
+    <div class="col-md-4">
+        @using (Html.BeginForm())
+        {
+            @Html.HiddenFor(e=>e.batch_id)
+            <div class="card">
+                <div class="card-header">
+                    <h3 style="font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif">
+                        Create Batch
+                    </h3>
+                </div>
+                <div class="card-body">
+                    <div class="mb-3">
+                        <label>Batch Name</label>
+                        @Html.TextBoxFor(e => e.batch_name, new { @class = "form-control" })
+                    </div>
+                    <div class="md-3">
+                        <label>Topic Name</label>
+                        @Html.DropDownListFor(e => e.topic_id, ViewBag.topics as List<SelectListItem>, "Select Topic", new { @class = "form-control" })
+                    </div>
+                    <div class="md-3">
+                        <label>Trainer Name</label>
+                        @Html.DropDownListFor(e => e.trainer_id, ViewBag.trainer as List<SelectListItem>, "Select Trainer", new { @class = "form-control" })
+                    </div>
+                    <div class="md-3">
+                        <label>Start Date</label>
+                        @Html.TextBoxFor(e => e.start_date, "{0:yyyy-MM-dd}", new { @class = "form-control", Type = "date" })
+                    </div>
+                    <div class="md-3">
+                        <label>End Date</label>
+                        @Html.TextBoxFor(e => e.end_date, "{0:yyyy-MM-dd}", new { @class = "form-control", Type = "date" })
+                    </div>
+                    <div class="md-3">
+                        <label>Batch Time</label>
+                        @Html.TextBoxFor(e => e.batch_time, "{0:HH:mm:ss}", new { @class = "form-control", Type = "time" })
+                    </div>
+                    <div class="md-3">
+                        <label>Status</label>
+                        @Html.TextBoxFor(e => e.status, new { @class = "form-control" })
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <input type="submit" value="Update" class="btn btn-info" />
+                    @Html.ActionLink("Back", "Index")
+                </div>
+            </div>
+        }
+    </div>
+</div>

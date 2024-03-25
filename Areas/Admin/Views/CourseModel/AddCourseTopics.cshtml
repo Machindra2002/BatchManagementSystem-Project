@@ -1,0 +1,81 @@
+﻿@model DatabaseOperation.tblcourse_topics
+@{
+    ViewBag.Title = "AddcourseTopics";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+@*
+<script>
+        $(document).ready(function () {
+            $("#myModal").modal("show");
+        });
+</script>
+ *@
+<br/>
+<div class="row">
+
+    <div class="col-md-4">
+        @using (Html.BeginForm())
+        {
+
+            <div class="modal-body">
+                <div class="card">
+                    <div class="card-header">
+                        <h3>
+                            <div class="card-title">Course Topics</div>
+                        </h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="form-group">
+                            Course ID
+                            @Html.DropDownListFor(e => e.course_id, ViewBag.courses as List<SelectListItem>, "select course", new { @class = "form-control" })
+                        </div>
+                        <div class="form-group">
+                            <h2>Topic Name</h2>
+                            @for (int i = 0; i < Model.topicModels.Count(); i++)
+                            {
+                                <br />
+                                @Html.CheckBoxFor(e => Model.topicModels[i].isSeletcted, new { @class = "topic-checkbox", data_topic_id = Model.topicModels[i].topic_id })
+                                @Model.topicModels[i].topic_name
+                                @Html.HiddenFor(e => Model.topicModels[i].topic_id)
+                                @Html.HiddenFor(e => Model.topicModels[i].topic_name)
+                            }
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+    <div class="col-md-7">
+        @{
+            int a = 1;
+        }
+        <table class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th>Sr.No</th>
+                    <th>Course Name</th>
+                    <th>Topics</th>
+                </tr>
+            </thead>
+            <tbody>
+                @if (ViewBag.ct != null)
+                {
+                    foreach (var item in ViewBag.ct)
+                    {
+                        <tr>
+                            <td>@a</td>
+                            <td>@item.tbltraining_courses.course_name</td>
+                            <td>@item.tbltraining_topics.topic_name</td>
+                        </tr>
+                        a++;
+                    }
+                }
+            </tbody>
+        </table>
+    </div>
+
+</div>

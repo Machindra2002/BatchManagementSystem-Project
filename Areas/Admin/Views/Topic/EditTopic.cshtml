@@ -1,0 +1,56 @@
+﻿@model DatabaseOperation.tbltraining_topics
+@{
+    ViewBag.Title = "EditTopic";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>EditTopic</h2>
+<div class="row">
+    <div class="col-md-4">
+        @using (Html.BeginForm())
+        {
+            @Html.HiddenFor(e => e.topic_id)
+            <div class="card">
+                <div class="card-header">
+                    <h2>Edit Topic</h2>
+                </div>
+                <div class="card-body">
+                    <div class="mb-3">
+                        <label>Topic Name</label>
+                        @Html.TextBoxFor(e => e.topic_name, new { @class = "form-control" })
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <input type="submit" value="Update" class="btn btn-info" />
+                    @ViewBag.edittopic
+                    @Html.ActionLink("Back","Topic")
+                </div>
+            </div>
+        }
+    </div>
+    <div class="col-md-7">
+
+        @{
+            int i = 1;
+        }
+        <table class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <td>Sr No</td>
+                    <td>Topic Name</td>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in ViewBag.topics)
+                {
+                    <tr>
+                        <td>@i</td>
+                        <td>@item.topic_name</td>
+                    </tr>
+                    i++;
+                }
+            </tbody>
+        </table>
+
+    </div>
+</div>

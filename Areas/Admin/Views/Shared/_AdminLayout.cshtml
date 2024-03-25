@@ -1,0 +1,56 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>_AdminLayout</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/bootstrap")
+</head>
+<body>
+    <div>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+            <div class="container-fluid">
+                <a href="#" class="navbar-brand">Batch Management System</a>
+                <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse2">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarCollapse2">
+                    <div class="navbar-nav  ms-auto">
+                        <a href="#" class="nav-item nav-link active">Home</a>
+                        <a href="#" class="nav-item nav-link">About</a>
+                        <a href="#" class="nav-item nav-link">Products</a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </div>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-2">
+                <ul class="list-group" style="height:100vh">
+                        <li class="list-group-item"><a href="/Admin/Dashboard">Dashboard</a></li>
+                        @*<li class="list-group-item"><a href="/Admin/Course/AddCourse">Course</a></li>*@
+                        <li class="list-group-item"><a href="/Admin/Topic/AddTopicContent/">Topic</a></li>
+                        <li class="list-group-item"><a href="/Admin/Content/AddContent/">Content</a></li>
+                        <li class="list-group-item"><a href="/Admin/CourseModel/AddcourseTopics">Model</a></li>
+                        <li class="list-group-item"><a href="/Admin/Course/AddCourse_CourseFees">Course</a></li>
+                        <li class="list-group-item"><a href="/Admin/CourseFees/AddCourseFees">CourseFees</a></li>
+                        <li class="list-group-item"><a href="/Admin/Student">AddStudent</a></li>
+                        <li class="list-group-item"><a href="/Admin/StudentRegister">StudentRegister</a></li>
+                        <li class="list-group-item"><a href="/Admin/Trainer">Trainer</a></li>
+                        <li class="list-group-item"><a href="/Admin/Batch">Batch</a></li>
+                    </ul>
+            </div>
+            <div class="col-md-10">
+                @RenderBody()
+            </div>
+        </div>
+    </div>
+</body>
+</html>

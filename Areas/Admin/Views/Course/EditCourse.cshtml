@@ -1,0 +1,26 @@
+﻿@model DatabaseOperation.tbltraining_courses
+@{
+    ViewBag.Title = "EditCourse";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="col-md-4">
+    @using (Html.BeginForm())
+    {
+        @Html.HiddenFor(e=>e.course_id)
+        <div class="card">
+            <div class="card-header">
+                <h2>Course</h2>
+            </div>
+            <div class="card-body">
+                <div class="md-3">
+                    <label>Course Name</label>
+                    @Html.TextBoxFor(e => e.course_name, new { @class = "form-control" })
+                </div>
+            </div>
+            <div class="card-footer">
+                <input type="submit" value="Submit" class="btn btn-primary" />
+            </div>
+        </div>
+    }
+</div>

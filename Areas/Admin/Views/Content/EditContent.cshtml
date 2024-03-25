@@ -1,0 +1,60 @@
+﻿@model DatabaseOperation.tbltopic_contents
+@{
+    ViewBag.Title = "EditContent";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>EditContent</h2>
+<div class="row">
+    <div class="col-md-4">
+        @using (Html.BeginForm())
+        {
+            @Html.HiddenFor(e=>e.content_id)
+            <div class="card">
+                <div class="card-header">
+                    <h3>Edit Content</h3>
+                </div>
+                <div class="card-body">
+                    <div class="mb-3">
+                        <label>Topic Name</label>
+                        @Html.DropDownListFor(e => e.topic_id, ViewBag.topic as List<SelectListItem>, "Select Topic", new { @class = "form-control" })
+                    </div>
+                    <div class="mb-3">
+                        <label>Content Name</label>
+                        @Html.TextBoxFor(e => e.content_name, new { @class = "form-control" })
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <input type="submit" value="Update" class="btn btn-info" />
+                    @ViewBag.msg
+                    @Html.ActionLink("back", "AddContent")
+                </div>
+            </div>
+        }
+    </div>
+    <div class="col-md-7">
+        @{
+            int i = 1;
+        }
+        <table class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <td>Sr No</td>
+                    <td>Topic Name</td>
+                    <td>Content Name</td>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in ViewBag.content)
+                {
+                    <tr>
+                        <td>@i</td>
+                        <td>@item.tbltraining_topics.topic_name</td>
+                        <td>@item.content_name</td>
+                    </tr>
+                    i++;
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

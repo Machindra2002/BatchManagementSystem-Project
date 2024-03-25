@@ -1,0 +1,107 @@
+﻿@model BatchManagementSystem.Models.Student_RegisterModel
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+<br/>
+
+<div class="row">
+    <div class="col-md-4">
+        @using (Html.BeginForm("Index","Student", FormMethod.Post, new { @enctype = "multipart/form-data" }))
+        {
+            <div class="card">
+                <div class="card-header">
+                    <h3>Add Student</h3>
+                </div>
+                <div class="card-body">
+                    <div class="mb-3">
+                        <label>Student Name</label>
+                        @Html.TextBoxFor(e => e.student_name, new { @class = "form-control" })
+                    </div>
+                    <div class="mb-3">
+                        <label>Gender</label>
+                        @Html.RadioButtonFor(e => e.gender, "Male")<span>Male</span>
+                        @Html.RadioButtonFor(e => e.gender, "FeMale")<span>Female</span>
+                    </div>
+                    <div class="mb-3">
+                        <label>Mobile Number</label>
+                        @Html.TextBoxFor(e => e.mobile_number, new { @class = "form-control" })
+                    </div>
+                    <div class="mb-3">
+                        <label>Email Address</label>
+                        @Html.TextBoxFor(e => e.email_address, new { @class = "form-control" })
+                    </div>
+                    <div class="md-3">
+                        <label>Birth Date</label>
+                        @Html.TextBoxFor(e => e.birth_date, "{dd-mm-yyyy}", new { @class = "form-control", Type = "Date" })
+                    </div>
+                    <div class="mb-3">
+                        <label>profile Photo</label>
+                        <input type="file" name="profilephoto" , class="form-control" />
+                    </div>
+                    <div class="mb-3">
+                        <label>Qualification</label>
+                        @Html.TextBoxFor(e => e.qualification, new { @class = "form-control" })
+                    </div>
+                    <div class="mb-3">
+                        <label>Course</label>
+                        @Html.DropDownListFor(e => e.course_id, ViewBag.courses as List<SelectListItem>, "select Course", new { @class = "form-control" })
+                    </div>
+                    <div class="mb-3">
+                        <label>Registration Date</label>
+                        @Html.TextBoxFor(e => e.registration_date, new { @class = "form-control", type = "date" })
+                    </div>
+                    <div class="mb-3">
+                        <label>Discount</label>
+                        @Html.TextBoxFor(e => e.discount, new { @class = "form-control" })
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <input type="submit" value="Submit" class="btn btn-primary" />
+                    @ViewBag.msg
+                </div>
+            </div>
+        }
+    </div>
+    <div class="col-md-8">
+        @{
+            int i = 1;
+        }
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Sr No</th>
+                    <th>Student Name</th>
+                    <th>Gender</th>
+                    <th>Mobile Number</th>
+                    <th>Birth Date</th>
+                    <th>Profile Photo</th>
+                    <th>Qualification</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var s in ViewBag.student)
+                {
+                    <tr>
+                        <td>@i</td>
+                        <td>@s.student_name</td>
+                        <td>@s.gender</td>
+                        <td>@s.mobile_number</td>
+                        <td>@(s.birth_date != null ? s.birth_date.ToString("dd-MM-yyyy") : "N/A")</td>
+                        <td>
+                            <img style="height:80px;width:100px;" src="~/Images/@s.profile_photo" />
+                        </td>
+                        <td>@s.qualification</td>
+                        <td>
+                            @Html.ActionLink("Edit", "EditStudent", new { @id = s.student_id })
+                            &nbsp;
+                            @Html.ActionLink("Delete", "DeleteStudent", new { @id = s.student_id })
+                        </td>
+                    </tr>
+                    i++;
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

@@ -1,0 +1,78 @@
+﻿@model DatabaseOperation.tbltrainer
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Trainer</h2>
+
+<div class="col-md-4">
+    @using (Html.BeginForm())
+    {
+        <div class="card">
+            <div class="card-header">
+                <h3 style="font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif">
+                    Create Batch
+                </h3>
+            </div>
+            <div class="card-body">
+                <div class="mb-3">
+                    <label>Trainer Name</label>
+                    @Html.TextBoxFor(e => e.trainer_name, new { @class = "form-control" })
+                </div>
+                <div class="md-3">
+                    <label>Qualification</label>
+                    @Html.TextBoxFor(e => e.qualification, new { @class = "form-control" })
+                </div>
+                <div class="md-3">
+                    <label>Gmail</label>
+                    @Html.TextBoxFor(e => e.email_address, new { @class = "form-control" })
+                </div>
+                <div class="md-3">
+                    <label>Mobile Number</label>
+                    @Html.TextBoxFor(e => e.mobile_number, new { @class = "form-control" })
+                </div>
+            </div>
+            <div class="card-footer">
+                <input type="submit" value="Submit" class="btn btn-primary" />
+            </div>
+        </div>
+    }
+</div>
+<br/>
+<div class="col-md-8">
+    <table class="table table-bordered table-light">
+        @{ 
+            int i = 1;
+        }
+        <thead>
+            <tr>
+                <th>Sr No</th>
+                <th>Trainer Name</th>
+                <th>Qualifcation</th>
+                <th>Email</th>
+                <th>Mobile No</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach(var t in ViewBag.trainer)
+            {
+                <tr>
+                    <td>@i</td>
+                    <td>@t.trainer_name</td>
+                    <td>@t.qualification</td>
+                    <td>@t.email_address</td>
+                    <td>@t.mobile_number</td>
+                    <td>
+                        @Html.ActionLink("Edit", "EditTrainer", new { @id = t.trainer_id })
+                        &nbsp;
+                        @Html.ActionLink("Delete", "Delete", new { @id = t.trainer_id })
+                    </td>
+                </tr>
+                i++;
+            }
+        </tbody>
+    </table>
+</div>
+

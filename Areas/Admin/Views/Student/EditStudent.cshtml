@@ -1,0 +1,55 @@
+﻿@model DatabaseOperation.tblstudent_details
+@{
+    ViewBag.Title = "EditStudent";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>EditStudent</h2>
+
+<div class="col-md-4">
+    @using (Html.BeginForm("EditStudent", "Student", FormMethod.Post, new { @enctype = "multipart/form-data" }))
+    {
+        @Html.HiddenFor(e=>e.student_id)
+        <div class="card">
+            <div class="card-header">
+                <h3>Add Student</h3>
+            </div>
+            <div class="card-body">
+                <div class="mb-3">
+                    <label>Student Name</label>
+                    @Html.TextBoxFor(e => e.student_name, new { @class = "form-control" })
+                </div>
+                <div class="mb-3">
+                    <label>Gender</label>
+                    @Html.RadioButtonFor(e => e.gender, "Male")<span>Male</span>
+                    @Html.RadioButtonFor(e => e.gender, "FeMale")<span>Female</span>
+                </div>
+                <div class="mb-3">
+                    <label>Mobile Number</label>
+                    @Html.TextBoxFor(e => e.mobile_number, new { @class = "form-control" })
+                </div>
+                <div class="mb-3">
+                    <label>Email Address</label>
+                    @Html.TextBoxFor(e => e.email_address, new { @class = "form-control" })
+                </div>
+                <div class="mb-3">
+                    <label>Birth Date</label>
+                    @Html.TextBoxFor(e => e.birth_date, "{0:yyyy-MM-dd}", new { @class = "from-control", Type = "date" })
+                </div>
+                <div class="mb-3">
+                    <label>profile Photo</label>
+                    <input type="file" name="profilephoto" />
+                </div>
+                <div class="mb-3">
+                    <label>Qualification</label>
+                    @Html.TextBoxFor(e => e.qualification, new { @class = "form-control" })
+                </div>
+            </div>
+            <div class="card-footer">
+                <input type="submit" value="Update" class="btn btn-dark" />
+                @ViewBag.msg
+                @Html.ActionLink("Back","Index")
+            </div>
+        </div>
+    }
+</div>

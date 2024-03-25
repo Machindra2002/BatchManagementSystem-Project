@@ -1,0 +1,60 @@
+﻿@model DatabaseOperation.tbltraining_courses
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Index</h2>
+@*
+<div class="row">
+    <div class="col-md-4">
+        @using (Html.BeginForm())
+        {
+            <div class="card">
+                <div class="card-header">
+                    <h2>Course</h2>
+                </div>
+                <div class="card-body">
+                    <div class="md-3">
+                        <label>Course Name</label>
+                        @Html.TextBoxFor(e => e.course_name, new { @class = "form-control" })
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <input type="submit" value="Submit" class="btn btn-primary"/>
+                </div>
+            </div>
+        }
+    </div>
+    <div class="col-md-8">
+        @{ 
+            int i = 1;
+        }
+        <table class="table table-bordered table-striped table-hover">
+            <thead>
+                <tr>
+                    <th>Sr No</th>
+                    <th>Course Name</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                @if(ViewBag.courses != null) { 
+                    foreach (var item in ViewBag.courses)
+                    {
+                        <tr>
+                            <td>@i</td>
+                            <td>@item.course_name</td>
+                            <td>
+                                @Html.ActionLink("Edit", "EditCourse", new { @id = item.course_id })
+                                &nbsp;
+                                @Html.ActionLink("Delete", "DeleteCourse", new { @id = item.course_id })
+                            </td>
+                        </tr>
+                        i++;
+                    }
+                }
+            </tbody>
+        </table>
+    </div>
+</div>*@
