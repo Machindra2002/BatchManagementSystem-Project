@@ -1,0 +1,459 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="batch_managementDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="tbladmin_details">
+    <Key>
+      <PropertyRef Name="admin_id" />
+    </Key>
+    <Property Name="admin_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="user_name" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="password" Type="varchar" MaxLength="100" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tblbatch_schedule">
+    <Key>
+      <PropertyRef Name="batch_schedule_id" />
+    </Key>
+    <Property Name="batch_schedule_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="batch_id" Type="int" />
+    <Property Name="content_id" Type="int" />
+    <Property Name="expected_date" Type="date" />
+    <Property Name="actual_date" Type="date" />
+  </EntityType>
+  <EntityType Name="tblbatch_schedule_attendance">
+    <Key>
+      <PropertyRef Name="schedule_attendance_id" />
+    </Key>
+    <Property Name="schedule_attendance_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="batch_schedule_id" Type="int" />
+    <Property Name="attendance_date" Type="date" />
+  </EntityType>
+  <EntityType Name="tblbatch_students">
+    <Key>
+      <PropertyRef Name="batch_student_id" />
+    </Key>
+    <Property Name="batch_student_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="batch_id" Type="int" />
+    <Property Name="registration_id" Type="int" />
+  </EntityType>
+  <EntityType Name="tblbatches">
+    <Key>
+      <PropertyRef Name="batch_id" />
+    </Key>
+    <Property Name="batch_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="batch_name" Type="varchar" MaxLength="100" />
+    <Property Name="topic_id" Type="int" />
+    <Property Name="trainer_id" Type="int" />
+    <Property Name="start_date" Type="date" />
+    <Property Name="end_date" Type="date" />
+    <Property Name="batch_time" Type="varchar" MaxLength="20" />
+    <Property Name="status" Type="varchar" MaxLength="20" />
+  </EntityType>
+  <EntityType Name="tblcourse_topics">
+    <Key>
+      <PropertyRef Name="course_topics" />
+    </Key>
+    <Property Name="course_topics" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="course_id" Type="int" />
+    <Property Name="topic_id" Type="int" />
+  </EntityType>
+  <EntityType Name="tblschedule_attendance">
+    <Key>
+      <PropertyRef Name="attendance_id" />
+    </Key>
+    <Property Name="attendance_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="schedule_attendance_id" Type="int" />
+    <Property Name="registration_id" Type="int" />
+    <Property Name="is_present" Type="int" />
+  </EntityType>
+  <EntityType Name="tblstudent_details">
+    <Key>
+      <PropertyRef Name="student_id" />
+    </Key>
+    <Property Name="student_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="student_name" Type="varchar" MaxLength="100" />
+    <Property Name="gender" Type="varchar" MaxLength="10" />
+    <Property Name="mobile_number" Type="varchar" MaxLength="20" />
+    <Property Name="email_address" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="password" Type="varchar" MaxLength="100" />
+    <Property Name="birth_date" Type="date" />
+    <Property Name="profile_photo" Type="varchar" MaxLength="40" />
+    <Property Name="qualification" Type="varchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="tblstudent_payments">
+    <Key>
+      <PropertyRef Name="payment_id" />
+    </Key>
+    <Property Name="payment_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="registration_id" Type="int" />
+    <Property Name="payment_date" Type="date" />
+    <Property Name="payment_amount" Type="float" />
+    <Property Name="payment_mode" Type="varchar" MaxLength="100" />
+    <Property Name="payment_description" Type="varchar(max)" />
+  </EntityType>
+  <EntityType Name="tblstudent_registrations">
+    <Key>
+      <PropertyRef Name="registration_id" />
+    </Key>
+    <Property Name="registration_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="student_id" Type="int" />
+    <Property Name="course_id" Type="int" />
+    <Property Name="registration_date" Type="date" />
+    <Property Name="discount" Type="float" />
+  </EntityType>
+  <EntityType Name="tbltopic_contents">
+    <Key>
+      <PropertyRef Name="content_id" />
+    </Key>
+    <Property Name="content_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="topic_id" Type="int" />
+    <Property Name="content_name" Type="varchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="tbltrainer_topics">
+    <Key>
+      <PropertyRef Name="trainer_topic_id" />
+    </Key>
+    <Property Name="trainer_topic_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="topic_id" Type="int" />
+    <Property Name="trainer_id" Type="int" />
+  </EntityType>
+  <EntityType Name="tbltrainers">
+    <Key>
+      <PropertyRef Name="trainer_id" />
+    </Key>
+    <Property Name="trainer_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="trainer_name" Type="varchar" MaxLength="100" />
+    <Property Name="qualification" Type="varchar" MaxLength="100" />
+    <Property Name="email_address" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="password" Type="varchar" MaxLength="100" />
+    <Property Name="mobile_number" Type="varchar" MaxLength="20" />
+  </EntityType>
+  <EntityType Name="tbltraining_course_fees">
+    <Key>
+      <PropertyRef Name="fee_id" />
+    </Key>
+    <Property Name="fee_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="course_id" Type="int" />
+    <Property Name="fees_amount" Type="float" Nullable="false" />
+    <Property Name="gst" Type="float" />
+    <Property Name="fee_mode" Type="varchar" MaxLength="20" />
+  </EntityType>
+  <EntityType Name="tbltraining_courses">
+    <Key>
+      <PropertyRef Name="course_id" />
+    </Key>
+    <Property Name="course_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="course_name" Type="varchar" MaxLength="100" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tbltraining_topics">
+    <Key>
+      <PropertyRef Name="topic_id" />
+    </Key>
+    <Property Name="topic_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="topic_name" Type="varchar" MaxLength="100" Nullable="false" />
+  </EntityType>
+  <Association Name="fcontenticsasd">
+    <End Role="tbltopic_contents" Type="Self.tbltopic_contents" Multiplicity="0..1" />
+    <End Role="tblbatch_schedule" Type="Self.tblbatch_schedule" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbltopic_contents">
+        <PropertyRef Name="content_id" />
+      </Principal>
+      <Dependent Role="tblbatch_schedule">
+        <PropertyRef Name="content_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__tblcourse__cours__49C3F6B7">
+    <End Role="tbltraining_courses" Type="Self.tbltraining_courses" Multiplicity="0..1" />
+    <End Role="tblcourse_topics" Type="Self.tblcourse_topics" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbltraining_courses">
+        <PropertyRef Name="course_id" />
+      </Principal>
+      <Dependent Role="tblcourse_topics">
+        <PropertyRef Name="course_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__tblcourse__topic__4AB81AF0">
+    <End Role="tbltraining_topics" Type="Self.tbltraining_topics" Multiplicity="0..1" />
+    <End Role="tblcourse_topics" Type="Self.tblcourse_topics" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbltraining_topics">
+        <PropertyRef Name="topic_id" />
+      </Principal>
+      <Dependent Role="tblcourse_topics">
+        <PropertyRef Name="topic_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fkcourseid">
+    <End Role="tbltraining_courses" Type="Self.tbltraining_courses" Multiplicity="0..1" />
+    <End Role="tbltraining_course_fees" Type="Self.tbltraining_course_fees" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbltraining_courses">
+        <PropertyRef Name="course_id" />
+      </Principal>
+      <Dependent Role="tbltraining_course_fees">
+        <PropertyRef Name="course_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fkcoursesdid">
+    <End Role="tbltraining_courses" Type="Self.tbltraining_courses" Multiplicity="0..1" />
+    <End Role="tblstudent_registrations" Type="Self.tblstudent_registrations" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbltraining_courses">
+        <PropertyRef Name="course_id" />
+      </Principal>
+      <Dependent Role="tblstudent_registrations">
+        <PropertyRef Name="course_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fkregasdheid">
+    <End Role="tblstudent_registrations" Type="Self.tblstudent_registrations" Multiplicity="0..1" />
+    <End Role="tblschedule_attendance" Type="Self.tblschedule_attendance" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblstudent_registrations">
+        <PropertyRef Name="registration_id" />
+      </Principal>
+      <Dependent Role="tblschedule_attendance">
+        <PropertyRef Name="registration_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fkregid">
+    <End Role="tblstudent_registrations" Type="Self.tblstudent_registrations" Multiplicity="0..1" />
+    <End Role="tblstudent_payments" Type="Self.tblstudent_payments" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblstudent_registrations">
+        <PropertyRef Name="registration_id" />
+      </Principal>
+      <Dependent Role="tblstudent_payments">
+        <PropertyRef Name="registration_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fkregsopicsasd">
+    <End Role="tblstudent_registrations" Type="Self.tblstudent_registrations" Multiplicity="0..1" />
+    <End Role="tblbatch_students" Type="Self.tblbatch_students" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblstudent_registrations">
+        <PropertyRef Name="registration_id" />
+      </Principal>
+      <Dependent Role="tblbatch_students">
+        <PropertyRef Name="registration_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fkscasdheid">
+    <End Role="tblbatch_schedule_attendance" Type="Self.tblbatch_schedule_attendance" Multiplicity="0..1" />
+    <End Role="tblschedule_attendance" Type="Self.tblschedule_attendance" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblbatch_schedule_attendance">
+        <PropertyRef Name="schedule_attendance_id" />
+      </Principal>
+      <Dependent Role="tblschedule_attendance">
+        <PropertyRef Name="schedule_attendance_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fkscheid">
+    <End Role="tblbatch_schedule" Type="Self.tblbatch_schedule" Multiplicity="0..1" />
+    <End Role="tblbatch_schedule_attendance" Type="Self.tblbatch_schedule_attendance" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblbatch_schedule">
+        <PropertyRef Name="batch_schedule_id" />
+      </Principal>
+      <Dependent Role="tblbatch_schedule_attendance">
+        <PropertyRef Name="batch_schedule_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fkstidsd">
+    <End Role="tblstudent_details" Type="Self.tblstudent_details" Multiplicity="0..1" />
+    <End Role="tblstudent_registrations" Type="Self.tblstudent_registrations" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblstudent_details">
+        <PropertyRef Name="student_id" />
+      </Principal>
+      <Dependent Role="tblstudent_registrations">
+        <PropertyRef Name="student_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fktopicid">
+    <End Role="tbltraining_topics" Type="Self.tbltraining_topics" Multiplicity="0..1" />
+    <End Role="tbltopic_contents" Type="Self.tbltopic_contents" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbltraining_topics">
+        <PropertyRef Name="topic_id" />
+      </Principal>
+      <Dependent Role="tbltopic_contents">
+        <PropertyRef Name="topic_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fktopicsasd">
+    <End Role="tbltraining_topics" Type="Self.tbltraining_topics" Multiplicity="0..1" />
+    <End Role="tbltrainer_topics" Type="Self.tbltrainer_topics" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbltraining_topics">
+        <PropertyRef Name="topic_id" />
+      </Principal>
+      <Dependent Role="tbltrainer_topics">
+        <PropertyRef Name="topic_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fktopsdicsasd">
+    <End Role="tbltraining_topics" Type="Self.tbltraining_topics" Multiplicity="0..1" />
+    <End Role="tblbatches" Type="Self.tblbatches" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbltraining_topics">
+        <PropertyRef Name="topic_id" />
+      </Principal>
+      <Dependent Role="tblbatches">
+        <PropertyRef Name="topic_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fktzdsdsopicsasd">
+    <End Role="tbltrainers" Type="Self.tbltrainers" Multiplicity="0..1" />
+    <End Role="tblbatches" Type="Self.tblbatches" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbltrainers">
+        <PropertyRef Name="trainer_id" />
+      </Principal>
+      <Dependent Role="tblbatches">
+        <PropertyRef Name="trainer_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fktzdsopicsasd">
+    <End Role="tbltrainers" Type="Self.tbltrainers" Multiplicity="0..1" />
+    <End Role="tbltrainer_topics" Type="Self.tbltrainer_topics" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbltrainers">
+        <PropertyRef Name="trainer_id" />
+      </Principal>
+      <Dependent Role="tbltrainer_topics">
+        <PropertyRef Name="trainer_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fsdkbatchpicsasd">
+    <End Role="tblbatches" Type="Self.tblbatches" Multiplicity="0..1" />
+    <End Role="tblbatch_schedule" Type="Self.tblbatch_schedule" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblbatches">
+        <PropertyRef Name="batch_id" />
+      </Principal>
+      <Dependent Role="tblbatch_schedule">
+        <PropertyRef Name="batch_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fsdktopicsasd">
+    <End Role="tblbatches" Type="Self.tblbatches" Multiplicity="0..1" />
+    <End Role="tblbatch_students" Type="Self.tblbatch_students" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblbatches">
+        <PropertyRef Name="batch_id" />
+      </Principal>
+      <Dependent Role="tblbatch_students">
+        <PropertyRef Name="batch_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="batch_managementDBModelStoreContainer">
+    <EntitySet Name="tbladmin_details" EntityType="Self.tbladmin_details" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblbatch_schedule" EntityType="Self.tblbatch_schedule" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblbatch_schedule_attendance" EntityType="Self.tblbatch_schedule_attendance" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblbatch_students" EntityType="Self.tblbatch_students" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblbatches" EntityType="Self.tblbatches" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblcourse_topics" EntityType="Self.tblcourse_topics" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblschedule_attendance" EntityType="Self.tblschedule_attendance" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblstudent_details" EntityType="Self.tblstudent_details" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblstudent_payments" EntityType="Self.tblstudent_payments" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblstudent_registrations" EntityType="Self.tblstudent_registrations" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbltopic_contents" EntityType="Self.tbltopic_contents" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbltrainer_topics" EntityType="Self.tbltrainer_topics" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbltrainers" EntityType="Self.tbltrainers" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbltraining_course_fees" EntityType="Self.tbltraining_course_fees" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbltraining_courses" EntityType="Self.tbltraining_courses" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbltraining_topics" EntityType="Self.tbltraining_topics" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="fcontenticsasd" Association="Self.fcontenticsasd">
+      <End Role="tbltopic_contents" EntitySet="tbltopic_contents" />
+      <End Role="tblbatch_schedule" EntitySet="tblbatch_schedule" />
+    </AssociationSet>
+    <AssociationSet Name="FK__tblcourse__cours__49C3F6B7" Association="Self.FK__tblcourse__cours__49C3F6B7">
+      <End Role="tbltraining_courses" EntitySet="tbltraining_courses" />
+      <End Role="tblcourse_topics" EntitySet="tblcourse_topics" />
+    </AssociationSet>
+    <AssociationSet Name="FK__tblcourse__topic__4AB81AF0" Association="Self.FK__tblcourse__topic__4AB81AF0">
+      <End Role="tbltraining_topics" EntitySet="tbltraining_topics" />
+      <End Role="tblcourse_topics" EntitySet="tblcourse_topics" />
+    </AssociationSet>
+    <AssociationSet Name="fkcourseid" Association="Self.fkcourseid">
+      <End Role="tbltraining_courses" EntitySet="tbltraining_courses" />
+      <End Role="tbltraining_course_fees" EntitySet="tbltraining_course_fees" />
+    </AssociationSet>
+    <AssociationSet Name="fkcoursesdid" Association="Self.fkcoursesdid">
+      <End Role="tbltraining_courses" EntitySet="tbltraining_courses" />
+      <End Role="tblstudent_registrations" EntitySet="tblstudent_registrations" />
+    </AssociationSet>
+    <AssociationSet Name="fkregasdheid" Association="Self.fkregasdheid">
+      <End Role="tblstudent_registrations" EntitySet="tblstudent_registrations" />
+      <End Role="tblschedule_attendance" EntitySet="tblschedule_attendance" />
+    </AssociationSet>
+    <AssociationSet Name="fkregid" Association="Self.fkregid">
+      <End Role="tblstudent_registrations" EntitySet="tblstudent_registrations" />
+      <End Role="tblstudent_payments" EntitySet="tblstudent_payments" />
+    </AssociationSet>
+    <AssociationSet Name="fkregsopicsasd" Association="Self.fkregsopicsasd">
+      <End Role="tblstudent_registrations" EntitySet="tblstudent_registrations" />
+      <End Role="tblbatch_students" EntitySet="tblbatch_students" />
+    </AssociationSet>
+    <AssociationSet Name="fkscasdheid" Association="Self.fkscasdheid">
+      <End Role="tblbatch_schedule_attendance" EntitySet="tblbatch_schedule_attendance" />
+      <End Role="tblschedule_attendance" EntitySet="tblschedule_attendance" />
+    </AssociationSet>
+    <AssociationSet Name="fkscheid" Association="Self.fkscheid">
+      <End Role="tblbatch_schedule" EntitySet="tblbatch_schedule" />
+      <End Role="tblbatch_schedule_attendance" EntitySet="tblbatch_schedule_attendance" />
+    </AssociationSet>
+    <AssociationSet Name="fkstidsd" Association="Self.fkstidsd">
+      <End Role="tblstudent_details" EntitySet="tblstudent_details" />
+      <End Role="tblstudent_registrations" EntitySet="tblstudent_registrations" />
+    </AssociationSet>
+    <AssociationSet Name="fktopicid" Association="Self.fktopicid">
+      <End Role="tbltraining_topics" EntitySet="tbltraining_topics" />
+      <End Role="tbltopic_contents" EntitySet="tbltopic_contents" />
+    </AssociationSet>
+    <AssociationSet Name="fktopicsasd" Association="Self.fktopicsasd">
+      <End Role="tbltraining_topics" EntitySet="tbltraining_topics" />
+      <End Role="tbltrainer_topics" EntitySet="tbltrainer_topics" />
+    </AssociationSet>
+    <AssociationSet Name="fktopsdicsasd" Association="Self.fktopsdicsasd">
+      <End Role="tbltraining_topics" EntitySet="tbltraining_topics" />
+      <End Role="tblbatches" EntitySet="tblbatches" />
+    </AssociationSet>
+    <AssociationSet Name="fktzdsdsopicsasd" Association="Self.fktzdsdsopicsasd">
+      <End Role="tbltrainers" EntitySet="tbltrainers" />
+      <End Role="tblbatches" EntitySet="tblbatches" />
+    </AssociationSet>
+    <AssociationSet Name="fktzdsopicsasd" Association="Self.fktzdsopicsasd">
+      <End Role="tbltrainers" EntitySet="tbltrainers" />
+      <End Role="tbltrainer_topics" EntitySet="tbltrainer_topics" />
+    </AssociationSet>
+    <AssociationSet Name="fsdkbatchpicsasd" Association="Self.fsdkbatchpicsasd">
+      <End Role="tblbatches" EntitySet="tblbatches" />
+      <End Role="tblbatch_schedule" EntitySet="tblbatch_schedule" />
+    </AssociationSet>
+    <AssociationSet Name="fsdktopicsasd" Association="Self.fsdktopicsasd">
+      <End Role="tblbatches" EntitySet="tblbatches" />
+      <End Role="tblbatch_students" EntitySet="tblbatch_students" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

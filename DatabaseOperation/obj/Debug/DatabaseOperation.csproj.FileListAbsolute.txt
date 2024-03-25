@@ -1,0 +1,12 @@
+G:\.net practices\Project\DatabaseOperation\DatabaseOperation\bin\Debug\DatabaseOperation.dll.config
+G:\.net practices\Project\DatabaseOperation\DatabaseOperation\bin\Debug\DatabaseOperation.dll
+G:\.net practices\Project\DatabaseOperation\DatabaseOperation\bin\Debug\DatabaseOperation.pdb
+G:\.net practices\Project\DatabaseOperation\DatabaseOperation\bin\Debug\EntityFramework.dll
+G:\.net practices\Project\DatabaseOperation\DatabaseOperation\bin\Debug\EntityFramework.SqlServer.dll
+G:\.net practices\Project\DatabaseOperation\DatabaseOperation\bin\Debug\EntityFramework.xml
+G:\.net practices\Project\DatabaseOperation\DatabaseOperation\bin\Debug\EntityFramework.SqlServer.xml
+G:\.net practices\Project\DatabaseOperation\DatabaseOperation\obj\Debug\DatabaseOperation.csproj.AssemblyReference.cache
+G:\.net practices\Project\DatabaseOperation\DatabaseOperation\obj\Debug\DatabaseOperation.csproj.CoreCompileInputs.cache
+G:\.net practices\Project\DatabaseOperation\DatabaseOperation\obj\Debug\DatabaseOperation.csproj.CopyComplete
+G:\.net practices\Project\DatabaseOperation\DatabaseOperation\obj\Debug\DatabaseOperation.dll
+G:\.net practices\Project\DatabaseOperation\DatabaseOperation\obj\Debug\DatabaseOperation.pdb

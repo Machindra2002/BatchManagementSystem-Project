@@ -1,0 +1,171 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="batch_managementDBModelStoreContainer" CdmEntityContainer="batch_managementDBEntities">
+    <EntitySetMapping Name="tbladmin_details">
+      <EntityTypeMapping TypeName="batch_managementDBModel.tbladmin_details">
+        <MappingFragment StoreEntitySet="tbladmin_details">
+          <ScalarProperty Name="admin_id" ColumnName="admin_id" />
+          <ScalarProperty Name="user_name" ColumnName="user_name" />
+          <ScalarProperty Name="password" ColumnName="password" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblbatch_schedule">
+      <EntityTypeMapping TypeName="batch_managementDBModel.tblbatch_schedule">
+        <MappingFragment StoreEntitySet="tblbatch_schedule">
+          <ScalarProperty Name="batch_schedule_id" ColumnName="batch_schedule_id" />
+          <ScalarProperty Name="batch_id" ColumnName="batch_id" />
+          <ScalarProperty Name="content_id" ColumnName="content_id" />
+          <ScalarProperty Name="expected_date" ColumnName="expected_date" />
+          <ScalarProperty Name="actual_date" ColumnName="actual_date" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblbatch_schedule_attendance">
+      <EntityTypeMapping TypeName="batch_managementDBModel.tblbatch_schedule_attendance">
+        <MappingFragment StoreEntitySet="tblbatch_schedule_attendance">
+          <ScalarProperty Name="schedule_attendance_id" ColumnName="schedule_attendance_id" />
+          <ScalarProperty Name="batch_schedule_id" ColumnName="batch_schedule_id" />
+          <ScalarProperty Name="attendance_date" ColumnName="attendance_date" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblbatch_students">
+      <EntityTypeMapping TypeName="batch_managementDBModel.tblbatch_students">
+        <MappingFragment StoreEntitySet="tblbatch_students">
+          <ScalarProperty Name="batch_student_id" ColumnName="batch_student_id" />
+          <ScalarProperty Name="batch_id" ColumnName="batch_id" />
+          <ScalarProperty Name="registration_id" ColumnName="registration_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblbatches">
+      <EntityTypeMapping TypeName="batch_managementDBModel.tblbatch">
+        <MappingFragment StoreEntitySet="tblbatches">
+          <ScalarProperty Name="batch_id" ColumnName="batch_id" />
+          <ScalarProperty Name="batch_name" ColumnName="batch_name" />
+          <ScalarProperty Name="topic_id" ColumnName="topic_id" />
+          <ScalarProperty Name="trainer_id" ColumnName="trainer_id" />
+          <ScalarProperty Name="start_date" ColumnName="start_date" />
+          <ScalarProperty Name="end_date" ColumnName="end_date" />
+          <ScalarProperty Name="batch_time" ColumnName="batch_time" />
+          <ScalarProperty Name="status" ColumnName="status" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblschedule_attendance">
+      <EntityTypeMapping TypeName="batch_managementDBModel.tblschedule_attendance">
+        <MappingFragment StoreEntitySet="tblschedule_attendance">
+          <ScalarProperty Name="attendance_id" ColumnName="attendance_id" />
+          <ScalarProperty Name="schedule_attendance_id" ColumnName="schedule_attendance_id" />
+          <ScalarProperty Name="registration_id" ColumnName="registration_id" />
+          <ScalarProperty Name="is_present" ColumnName="is_present" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblstudent_details">
+      <EntityTypeMapping TypeName="batch_managementDBModel.tblstudent_details">
+        <MappingFragment StoreEntitySet="tblstudent_details">
+          <ScalarProperty Name="student_id" ColumnName="student_id" />
+          <ScalarProperty Name="student_name" ColumnName="student_name" />
+          <ScalarProperty Name="gender" ColumnName="gender" />
+          <ScalarProperty Name="mobile_number" ColumnName="mobile_number" />
+          <ScalarProperty Name="email_address" ColumnName="email_address" />
+          <ScalarProperty Name="password" ColumnName="password" />
+          <ScalarProperty Name="birth_date" ColumnName="birth_date" />
+          <ScalarProperty Name="profile_photo" ColumnName="profile_photo" />
+          <ScalarProperty Name="qualification" ColumnName="qualification" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblstudent_payments">
+      <EntityTypeMapping TypeName="batch_managementDBModel.tblstudent_payments">
+        <MappingFragment StoreEntitySet="tblstudent_payments">
+          <ScalarProperty Name="payment_id" ColumnName="payment_id" />
+          <ScalarProperty Name="registration_id" ColumnName="registration_id" />
+          <ScalarProperty Name="payment_date" ColumnName="payment_date" />
+          <ScalarProperty Name="payment_amount" ColumnName="payment_amount" />
+          <ScalarProperty Name="payment_mode" ColumnName="payment_mode" />
+          <ScalarProperty Name="payment_description" ColumnName="payment_description" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblstudent_registrations">
+      <EntityTypeMapping TypeName="batch_managementDBModel.tblstudent_registrations">
+        <MappingFragment StoreEntitySet="tblstudent_registrations">
+          <ScalarProperty Name="registration_id" ColumnName="registration_id" />
+          <ScalarProperty Name="student_id" ColumnName="student_id" />
+          <ScalarProperty Name="course_id" ColumnName="course_id" />
+          <ScalarProperty Name="registration_date" ColumnName="registration_date" />
+          <ScalarProperty Name="discount" ColumnName="discount" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbltopic_contents">
+      <EntityTypeMapping TypeName="batch_managementDBModel.tbltopic_contents">
+        <MappingFragment StoreEntitySet="tbltopic_contents">
+          <ScalarProperty Name="content_id" ColumnName="content_id" />
+          <ScalarProperty Name="topic_id" ColumnName="topic_id" />
+          <ScalarProperty Name="content_name" ColumnName="content_name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbltrainer_topics">
+      <EntityTypeMapping TypeName="batch_managementDBModel.tbltrainer_topics">
+        <MappingFragment StoreEntitySet="tbltrainer_topics">
+          <ScalarProperty Name="trainer_topic_id" ColumnName="trainer_topic_id" />
+          <ScalarProperty Name="topic_id" ColumnName="topic_id" />
+          <ScalarProperty Name="trainer_id" ColumnName="trainer_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbltrainers">
+      <EntityTypeMapping TypeName="batch_managementDBModel.tbltrainer">
+        <MappingFragment StoreEntitySet="tbltrainers">
+          <ScalarProperty Name="trainer_id" ColumnName="trainer_id" />
+          <ScalarProperty Name="trainer_name" ColumnName="trainer_name" />
+          <ScalarProperty Name="qualification" ColumnName="qualification" />
+          <ScalarProperty Name="email_address" ColumnName="email_address" />
+          <ScalarProperty Name="password" ColumnName="password" />
+          <ScalarProperty Name="mobile_number" ColumnName="mobile_number" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbltraining_course_fees">
+      <EntityTypeMapping TypeName="batch_managementDBModel.tbltraining_course_fees">
+        <MappingFragment StoreEntitySet="tbltraining_course_fees">
+          <ScalarProperty Name="fee_id" ColumnName="fee_id" />
+          <ScalarProperty Name="course_id" ColumnName="course_id" />
+          <ScalarProperty Name="fees_amount" ColumnName="fees_amount" />
+          <ScalarProperty Name="gst" ColumnName="gst" />
+          <ScalarProperty Name="fee_mode" ColumnName="fee_mode" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbltraining_courses">
+      <EntityTypeMapping TypeName="batch_managementDBModel.tbltraining_courses">
+        <MappingFragment StoreEntitySet="tbltraining_courses">
+          <ScalarProperty Name="course_id" ColumnName="course_id" />
+          <ScalarProperty Name="course_name" ColumnName="course_name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbltraining_topics">
+      <EntityTypeMapping TypeName="batch_managementDBModel.tbltraining_topics">
+        <MappingFragment StoreEntitySet="tbltraining_topics">
+          <ScalarProperty Name="topic_id" ColumnName="topic_id" />
+          <ScalarProperty Name="topic_name" ColumnName="topic_name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblcourse_topics">
+      <EntityTypeMapping TypeName="batch_managementDBModel.tblcourse_topics">
+        <MappingFragment StoreEntitySet="tblcourse_topics">
+          <ScalarProperty Name="topic_id" ColumnName="topic_id" />
+          <ScalarProperty Name="course_id" ColumnName="course_id" />
+          <ScalarProperty Name="course_topics" ColumnName="course_topics" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

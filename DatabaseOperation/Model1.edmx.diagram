@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="a3acc66fa0da4a268853c816545541cd" Name="Diagram1" ZoomLevel="116">
+        <EntityTypeShape EntityType="batch_managementDBModel.tbladmin_details" Width="1.5" PointX="7.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="batch_managementDBModel.tblbatch_schedule" Width="1.5" PointX="0.75" PointY="14.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="batch_managementDBModel.tblbatch_schedule_attendance" Width="1.5" PointX="3" PointY="14.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="batch_managementDBModel.tblbatch_students" Width="1.5" PointX="5.25" PointY="5.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="batch_managementDBModel.tblbatch" Width="1.5" PointX="1.5" PointY="18.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="batch_managementDBModel.tblschedule_attendance" Width="1.5" PointX="5.25" PointY="2.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="batch_managementDBModel.tblstudent_details" Width="1.5" PointX="0.75" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="batch_managementDBModel.tblstudent_payments" Width="1.5" PointX="5.25" PointY="11.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="batch_managementDBModel.tblstudent_registrations" Width="1.5" PointX="3" PointY="5.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="batch_managementDBModel.tbltopic_contents" Width="1.5" PointX="1.5" PointY="26.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="batch_managementDBModel.tbltrainer_topics" Width="1.5" PointX="3.75" PointY="26.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="batch_managementDBModel.tbltrainer" Width="1.5" PointX="1.5" PointY="23.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="batch_managementDBModel.tbltraining_course_fees" Width="1.5" PointX="3" PointY="9.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="batch_managementDBModel.tbltraining_courses" Width="1.5" PointX="0.75" PointY="6" IsExpanded="true" />
+        <EntityTypeShape EntityType="batch_managementDBModel.tbltraining_topics" Width="1.5" PointX="1.5" PointY="29.875" IsExpanded="true" />
+        <AssociationConnector Association="batch_managementDBModel.fcontenticsasd" ManuallyRouted="false" />
+        <AssociationConnector Association="batch_managementDBModel.fkscheid" ManuallyRouted="false" />
+        <AssociationConnector Association="batch_managementDBModel.fsdkbatchpicsasd" ManuallyRouted="false" />
+        <AssociationConnector Association="batch_managementDBModel.fkscasdheid" ManuallyRouted="false" />
+        <AssociationConnector Association="batch_managementDBModel.fkregsopicsasd" ManuallyRouted="false" />
+        <AssociationConnector Association="batch_managementDBModel.fsdktopicsasd" ManuallyRouted="false" />
+        <AssociationConnector Association="batch_managementDBModel.fktopsdicsasd" ManuallyRouted="false" />
+        <AssociationConnector Association="batch_managementDBModel.fktzdsdsopicsasd" ManuallyRouted="false" />
+        <AssociationConnector Association="batch_managementDBModel.fkregasdheid" ManuallyRouted="false" />
+        <AssociationConnector Association="batch_managementDBModel.fkstidsd" ManuallyRouted="false" />
+        <AssociationConnector Association="batch_managementDBModel.fkregid" ManuallyRouted="false" />
+        <AssociationConnector Association="batch_managementDBModel.fkcoursesdid" ManuallyRouted="false" />
+        <AssociationConnector Association="batch_managementDBModel.fktopicid" ManuallyRouted="false" />
+        <AssociationConnector Association="batch_managementDBModel.fktopicsasd" ManuallyRouted="false" />
+        <AssociationConnector Association="batch_managementDBModel.fktzdsopicsasd" ManuallyRouted="false" />
+        <AssociationConnector Association="batch_managementDBModel.fkcourseid" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="batch_managementDBModel.tblcourse_topics" Width="1.5" PointX="3.75" PointY="18" />
+        <AssociationConnector Association="batch_managementDBModel.FK__tblcourse__cours__49C3F6B7" />
+        <AssociationConnector Association="batch_managementDBModel.FK__tblcourse__topic__4AB81AF0" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
