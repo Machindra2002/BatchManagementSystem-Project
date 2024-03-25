@@ -1,0 +1,14 @@
+G:\.net practices\Project\DatabaseOperation\DatabaseServices\bin\Debug\DatabaseServices.dll
+G:\.net practices\Project\DatabaseOperation\DatabaseServices\bin\Debug\DatabaseServices.pdb
+G:\.net practices\Project\DatabaseOperation\DatabaseServices\bin\Debug\DatabaseOperation.dll
+G:\.net practices\Project\DatabaseOperation\DatabaseServices\bin\Debug\EntityFramework.dll
+G:\.net practices\Project\DatabaseOperation\DatabaseServices\bin\Debug\EntityFramework.SqlServer.dll
+G:\.net practices\Project\DatabaseOperation\DatabaseServices\bin\Debug\DatabaseOperation.pdb
+G:\.net practices\Project\DatabaseOperation\DatabaseServices\bin\Debug\DatabaseOperation.dll.config
+G:\.net practices\Project\DatabaseOperation\DatabaseServices\bin\Debug\EntityFramework.xml
+G:\.net practices\Project\DatabaseOperation\DatabaseServices\bin\Debug\EntityFramework.SqlServer.xml
+G:\.net practices\Project\DatabaseOperation\DatabaseServices\obj\Debug\DatabaseServices.csproj.AssemblyReference.cache
+G:\.net practices\Project\DatabaseOperation\DatabaseServices\obj\Debug\DatabaseServices.csproj.CoreCompileInputs.cache
+G:\.net practices\Project\DatabaseOperation\DatabaseServices\obj\Debug\DatabaseServices.csproj.CopyComplete
+G:\.net practices\Project\DatabaseOperation\DatabaseServices\obj\Debug\DatabaseServices.dll
+G:\.net practices\Project\DatabaseOperation\DatabaseServices\obj\Debug\DatabaseServices.pdb
